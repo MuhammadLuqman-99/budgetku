@@ -37,3 +37,10 @@ next-env.d.ts
 
 # Google OAuth credentials
 client_secret_*.json
+
+# Serwist service worker (auto-generated)
+public/sw.js
+public/sw.js.map
+public/swe-worker-*.js
+public/workbox-*.js
+public/workbox-*.js.map
