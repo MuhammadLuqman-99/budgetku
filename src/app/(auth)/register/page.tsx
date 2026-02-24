@@ -79,7 +79,7 @@ export default function RegisterPage() {
           <Wallet className="h-6 w-6 text-primary-foreground" />
         </div>
         <CardTitle className="text-2xl">Create Account</CardTitle>
-        <CardDescription>Join {APP_NAME} to start managing your finances</CardDescription>
+        <CardDescription>Sertai {APP_NAME} untuk mula mengurus kewangan anda</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>

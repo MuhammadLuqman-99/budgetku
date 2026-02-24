@@ -30,7 +30,7 @@ export async function exportToPDF(expenses: Expense[], filename: string = 'expen
 
   // Title
   doc.setFontSize(18);
-  doc.text('BudgetKu - Expense Report', 14, 22);
+  doc.text('SMARTSPENDIPT - Laporan Perbelanjaan', 14, 22);
 
   // Date range
   doc.setFontSize(10);

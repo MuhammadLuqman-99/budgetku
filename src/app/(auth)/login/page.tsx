@@ -73,7 +73,7 @@ export default function LoginPage() {
           <Wallet className="h-6 w-6 text-primary-foreground" />
         </div>
         <CardTitle className="text-2xl">{APP_NAME}</CardTitle>
-        <CardDescription>Sign in to manage your finances</CardDescription>
+        <CardDescription>Log masuk untuk mengurus kewangan anda</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>

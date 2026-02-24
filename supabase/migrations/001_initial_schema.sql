@@ -1,5 +1,5 @@
 -- =============================================================================
--- Student Finance PWA - Database Schema
+-- SMARTSPENDIPT - Database Schema
 -- Migration: 001_initial_schema.sql
 -- =============================================================================
 

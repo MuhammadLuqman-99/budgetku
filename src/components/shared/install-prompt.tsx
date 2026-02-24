@@ -53,16 +53,16 @@ export function InstallPrompt() {
             <Download className="h-5 w-5 text-primary-foreground" />
           </div>
           <div className="flex-1">
-            <p className="text-sm font-semibold">Install BudgetKu</p>
+            <p className="text-sm font-semibold">Pasang SMARTSPENDIPT</p>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Add to home screen for quick access and offline support.
+              Tambah ke skrin utama untuk akses pantas dan sokongan luar talian.
             </p>
             <div className="flex items-center gap-2 mt-3">
               <Button size="sm" onClick={handleInstall} className="h-8 text-xs">
-                Install App
+                Pasang App
               </Button>
               <Button size="sm" variant="ghost" onClick={handleDismiss} className="h-8 text-xs">
-                Not now
+                Bukan sekarang
               </Button>
             </div>
           </div>

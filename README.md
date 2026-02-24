@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="public/icons/icon-192x192.png" alt="BudgetKu Logo" width="80" height="80" />
+  <img src="public/icons/icon-192x192.png" alt="SMARTSPENDIPT Logo" width="80" height="80" />
 </p>
 
-<h1 align="center">BudgetKu</h1>
+<h1 align="center">SMARTSPENDIPT</h1>
 
 <p align="center">
-  <strong>Student Financial Management PWA</strong><br/>
-  Track daily expenses, set smart budgets, and view weekly insights — all in Ringgit Malaysia.
+  <strong>Aplikasi Pengurusan Kewangan Pelajar Politeknik</strong><br/>
+  Rekod perbelanjaan harian, tetapkan bajet pintar, dan lihat ringkasan mingguan — semua dalam Ringgit Malaysia.
 </p>
 
 <p align="center">
@@ -17,93 +17,106 @@
   <img src="https://img.shields.io/badge/PWA-Installable-5A0FC8?logo=pwa" alt="PWA" />
 </p>
 
-<p align="center">
-  <a href="https://budgetku-zeta.vercel.app"><strong>View Live Demo</strong></a>
-</p>
+---
+
+## Tentang
+
+**SMARTSPENDIPT** adalah Progressive Web App (PWA) yang dibina sebagai **Projek Akhir** untuk membantu pelajar politeknik mengurus kewangan peribadi mereka. Pelajar boleh merekod perbelanjaan harian mengikut kategori (Keperluan vs Kehendak), menetapkan bajet bulanan dengan amaran pintar, dan memvisualisasikan corak perbelanjaan melalui carta interaktif.
+
+Aplikasi ini sepenuhnya responsif (mobile-first), boleh dipasang di mana-mana peranti, berfungsi secara offline, dan menyokong mod gelap. Semua jumlah dalam **Ringgit Malaysia (RM)**.
+
+### Tujuan
+- Membantu pelajar merekod perbelanjaan harian (Keperluan vs Kehendak)
+- Memberi amaran pintar apabila baki rendah atau perbelanjaan kehendak tinggi
+- Menyediakan ringkasan mingguan untuk kesedaran kewangan dan cadangan tindakan
 
 ---
 
-## About
+## Ahli Kumpulan (DPM5A)
 
-**BudgetKu** is a Progressive Web App (PWA) built as a **Final Year Project (FYP)** to help Malaysian university students manage their personal finances. Students can record daily expenses categorized by type, set monthly budgets with smart alerts, and visualize spending patterns through interactive charts.
+| Nama | No. Pendaftaran |
+|------|-----------------|
+| **Nur Hafizah binti Abdul Aziz** | 14DPM23F2007 |
+| **Siti Aishah binti Suhaimi** | 14DPM23F2025 |
+| **Sathis Kumar A/L Arivanandan** | 14DPM23F1803 |
 
-The app is fully responsive (mobile-first), installable on any device, works offline, and supports dark mode. All amounts are in **Ringgit Malaysia (RM)**.
+**Institusi:** Politeknik Merlimau Melaka
 
 ---
 
-## Features
+## Ciri-ciri
 
-| Feature | Description |
-|---------|-------------|
-| **Expense Tracking** | Add, edit, and delete expenses with 7 built-in categories (Food & Drinks, Transport, Education, Entertainment, Shopping, Bills & Utilities, Others) |
-| **Smart Budget** | Set monthly budgets with customizable alert thresholds (50%–100%) |
-| **Dashboard** | Overview with budget progress bar, weekly spending chart, smart alerts, daily reminder, and recent transactions |
-| **Analytics** | Category breakdown pie chart + weekly spending bar chart with Recharts |
-| **Authentication** | Email/password registration + Google OAuth sign-in via Supabase Auth |
-| **PWA / Installable** | Install on phone or desktop like a native app. Works offline via service worker |
-| **Dark Mode** | System-aware theme with manual toggle |
-| **Data Export** | Download expenses as CSV or PDF reports |
-| **Search & Filter** | Search expenses by description, filter by category and date range |
-| **Responsive Design** | Mobile bottom navigation + desktop sidebar layout |
-| **Secure** | Row Level Security (RLS) on all database tables — users can only access their own data |
+| Ciri | Penerangan |
+|------|------------|
+| **Rekod Perbelanjaan** | Tambah, edit, dan padam perbelanjaan dengan 7 kategori terbina (Makanan & Minuman, Pengangkutan, Pendidikan, Hiburan, Membeli-belah, Bil & Utiliti, Lain-lain) |
+| **Bajet Pintar** | Tetapkan bajet bulanan dengan had amaran boleh ubah (50%–100%) |
+| **Papan Pemuka** | Gambaran keseluruhan dengan bar kemajuan bajet, carta perbelanjaan mingguan, amaran pintar, peringatan harian, dan transaksi terkini |
+| **Analitik** | Carta pai pecahan kategori + carta bar perbelanjaan mingguan dengan Recharts |
+| **Pengesahan** | Pendaftaran emel/kata laluan + log masuk Google OAuth melalui Supabase Auth |
+| **PWA / Boleh Dipasang** | Pasang di telefon atau desktop seperti aplikasi biasa. Berfungsi secara offline melalui service worker |
+| **Mod Gelap** | Tema peka sistem dengan togol manual |
+| **Eksport Data** | Muat turun perbelanjaan sebagai laporan CSV atau PDF |
+| **Cari & Tapis** | Cari perbelanjaan mengikut penerangan, tapis mengikut kategori dan julat tarikh |
+| **Reka Bentuk Responsif** | Navigasi bawah mudah alih + susun atur bar sisi desktop |
+| **Selamat** | Row Level Security (RLS) pada semua jadual pangkalan data — pengguna hanya boleh mengakses data mereka sendiri |
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
+| Lapisan | Teknologi |
+|---------|-----------|
 | **Framework** | [Next.js 14](https://nextjs.org/) (App Router) |
-| **Language** | [TypeScript 5](https://www.typescriptlang.org/) |
+| **Bahasa** | [TypeScript 5](https://www.typescriptlang.org/) |
 | **Styling** | [Tailwind CSS 3.4](https://tailwindcss.com/) |
-| **UI Components** | [shadcn/ui](https://ui.shadcn.com/) (Radix UI primitives) |
-| **Icons** | [Lucide React](https://lucide.dev/) |
+| **Komponen UI** | [shadcn/ui](https://ui.shadcn.com/) (Radix UI primitives) |
+| **Ikon** | [Lucide React](https://lucide.dev/) |
 | **Backend & Auth** | [Supabase](https://supabase.com/) (PostgreSQL + Auth + RLS) |
 | **State Management** | [Zustand](https://zustand-demo.pmnd.rs/) |
 | **Forms** | [React Hook Form](https://react-hook-form.com/) + [Zod v4](https://zod.dev/) |
-| **Charts** | [Recharts](https://recharts.org/) |
+| **Carta** | [Recharts](https://recharts.org/) |
 | **PWA** | [Serwist](https://serwist.pages.dev/) (Service Worker) |
 | **PDF Export** | [jsPDF](https://github.com/parallax/jsPDF) + [jspdf-autotable](https://github.com/simonbengtsson/jsPDF-AutoTable) |
-| **Theme** | [next-themes](https://github.com/pacocoursey/next-themes) |
+| **Tema** | [next-themes](https://github.com/pacocoursey/next-themes) |
 | **Toast Notifications** | [Sonner](https://sonner.emilkowal.ski/) |
 | **Deployment** | [Vercel](https://vercel.com/) |
 
 ---
 
-## Project Structure
+## Struktur Projek
 
 ```
-student-finance-pwa/
+smartspendipt/
 ├── public/
-│   ├── icons/                            # PWA icons (192x192, 512x512, apple-touch)
+│   ├── icons/                            # Ikon PWA (192x192, 512x512, apple-touch)
 │   └── favicon.ico
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx                    # Root layout (ThemeProvider, Toaster, InstallPrompt)
-│   │   ├── page.tsx                      # Landing page (→ /dashboard if logged in)
+│   │   ├── layout.tsx                    # Layout utama (ThemeProvider, Toaster, InstallPrompt)
+│   │   ├── page.tsx                      # Halaman utama (→ /dashboard jika log masuk)
 │   │   ├── manifest.ts                   # PWA web manifest
 │   │   ├── sw.ts                         # Serwist service worker
-│   │   ├── globals.css                   # Tailwind CSS + theme variables
-│   │   ├── not-found.tsx                 # 404 page
+│   │   ├── globals.css                   # Tailwind CSS + pembolehubah tema
+│   │   ├── not-found.tsx                 # Halaman 404
 │   │   ├── error.tsx                     # Error boundary
-│   │   ├── (auth)/                       # Authentication pages
-│   │   │   ├── layout.tsx                # Centered auth layout with gradient
-│   │   │   ├── login/page.tsx            # Login (email/password + Google OAuth)
-│   │   │   ├── register/page.tsx         # Registration + Google OAuth
-│   │   │   ├── forgot-password/page.tsx  # Password reset
-│   │   │   └── auth/callback/route.ts    # OAuth callback handler
-│   │   └── (dashboard)/                  # Protected pages (requires login)
+│   │   ├── (auth)/                       # Halaman pengesahan
+│   │   │   ├── layout.tsx                # Layout auth berpusat dengan gradien
+│   │   │   ├── login/page.tsx            # Log masuk (emel/kata laluan + Google OAuth)
+│   │   │   ├── register/page.tsx         # Pendaftaran + Google OAuth
+│   │   │   ├── forgot-password/page.tsx  # Set semula kata laluan
+│   │   │   └── auth/callback/route.ts    # Pengendali panggilan balik OAuth
+│   │   └── (dashboard)/                  # Halaman dilindungi (perlu log masuk)
 │   │       ├── layout.tsx                # Sidebar + Header + Bottom Nav
-│   │       ├── dashboard/page.tsx        # Main dashboard
-│   │       ├── expenses/page.tsx         # Expense history (search, filter, delete)
-│   │       ├── expenses/new/page.tsx     # Add new expense
-│   │       ├── expenses/[id]/edit/       # Edit expense
-│   │       ├── budget/page.tsx           # Monthly budget settings
-│   │       ├── analytics/page.tsx        # Charts & category breakdown
-│   │       ├── about/page.tsx            # App info & FYP details
-│   │       └── profile/page.tsx          # User profile & settings
+│   │       ├── dashboard/page.tsx        # Papan pemuka utama
+│   │       ├── expenses/page.tsx         # Sejarah perbelanjaan (cari, tapis, padam)
+│   │       ├── expenses/new/page.tsx     # Tambah perbelanjaan baru
+│   │       ├── expenses/[id]/edit/       # Edit perbelanjaan
+│   │       ├── budget/page.tsx           # Tetapan bajet bulanan
+│   │       ├── analytics/page.tsx        # Carta & pecahan kategori
+│   │       ├── about/page.tsx            # Maklumat app & butiran projek
+│   │       └── profile/page.tsx          # Profil pengguna & tetapan
 │   ├── components/
-│   │   ├── ui/                           # 23 shadcn/ui components
+│   │   ├── ui/                           # 23 komponen shadcn/ui
 │   │   ├── layout/                       # header, sidebar, bottom-nav, mobile-nav
 │   │   ├── dashboard/                    # budget-summary, weekly-chart, smart-alerts,
 │   │   │                                 # daily-reminder, recent-transactions, quick-actions
@@ -112,214 +125,129 @@ student-finance-pwa/
 │   │                                     # install-prompt
 │   ├── hooks/
 │   │   ├── use-auth.ts                   # Auth state + onAuthStateChange listener
-│   │   ├── use-expenses.ts               # Expense CRUD with search & filter
-│   │   ├── use-budget.ts                 # Budget upsert + monthly spending
-│   │   ├── use-categories.ts             # Fetch categories from Supabase
-│   │   ├── use-weekly-summary.ts         # Weekly spending data via RPC
-│   │   └── use-debounce.ts               # Debounce utility hook
+│   │   ├── use-expenses.ts               # Expense CRUD dengan cari & tapis
+│   │   ├── use-budget.ts                 # Budget upsert + perbelanjaan bulanan
+│   │   ├── use-categories.ts             # Ambil kategori dari Supabase
+│   │   ├── use-weekly-summary.ts         # Data perbelanjaan mingguan melalui RPC
+│   │   └── use-debounce.ts               # Hook utiliti debounce
 │   ├── stores/
 │   │   ├── auth-store.ts                 # Zustand auth store (user, hydrate, signOut)
 │   │   └── ui-store.ts                   # Zustand UI store (sidebar toggle)
 │   ├── lib/
 │   │   ├── supabase/client.ts            # Browser Supabase client
 │   │   ├── supabase/server.ts            # Server Supabase client (cookie-based)
-│   │   ├── validations.ts               # Zod schemas (expense, budget, auth, profile)
+│   │   ├── validations.ts               # Skema Zod (expense, budget, auth, profile)
 │   │   ├── format.ts                     # formatRM(), parseRMToSen(), formatDate()
-│   │   ├── constants.ts                  # Categories, colors, thresholds, app config
-│   │   ├── export.ts                     # CSV and PDF export functions
+│   │   ├── constants.ts                  # Kategori, warna, had, konfigurasi app
+│   │   ├── export.ts                     # Fungsi eksport CSV dan PDF
 │   │   └── utils.ts                      # cn() utility (tailwind-merge + clsx)
 │   ├── types/
-│   │   ├── expense.ts                    # Expense & Category interfaces
-│   │   ├── budget.ts                     # Budget & CategoryBudget interfaces
-│   │   └── auth.ts                       # Profile interface
-│   └── middleware.ts                     # Auth token refresh + route protection
+│   │   ├── expense.ts                    # Antaramuka Expense & Category
+│   │   ├── budget.ts                     # Antaramuka Budget & CategoryBudget
+│   │   └── auth.ts                       # Antaramuka Profile
+│   └── middleware.ts                     # Penyegaran token auth + perlindungan laluan
 ├── supabase/
 │   └── migrations/
-│       └── 001_initial_schema.sql        # Full database schema + seed data
-├── next.config.mjs                       # Next.js config + Serwist PWA plugin
+│       └── 001_initial_schema.sql        # Skema pangkalan data penuh + data benih
+├── next.config.mjs                       # Konfigurasi Next.js + plugin Serwist PWA
 ├── tailwind.config.ts
 ├── tsconfig.json
-├── .env.local                            # Supabase credentials (not committed)
+├── .env.local                            # Kelayakan Supabase (tidak di-commit)
 └── package.json
 ```
 
 ---
 
-## Database Schema
+## Skema Pangkalan Data
 
-The app uses **Supabase (PostgreSQL)** with **6 tables**, all protected by **Row Level Security (RLS)**:
+Aplikasi ini menggunakan **Supabase (PostgreSQL)** dengan **6 jadual**, semuanya dilindungi oleh **Row Level Security (RLS)**:
 
-| Table | Description |
-|-------|------------|
-| `profiles` | Extends Supabase `auth.users` — stores full_name, avatar_url, university, currency |
-| `categories` | 7 default categories with name, icon, color, and sort order |
-| `expenses` | User expenses — amount stored in **sen (integer cents)** to avoid floating point issues |
-| `budgets` | Monthly budget per user with configurable alert threshold percentage |
-| `category_budgets` | Optional per-category budget allocation |
-| `notification_settings` | Daily reminder and budget alert preferences |
-
-### Database Functions (RPCs)
-
-| Function | Purpose |
-|----------|---------|
-| `get_monthly_spending(user_id, month, year)` | Total spending for a given month |
-| `get_weekly_spending(user_id)` | Daily totals for the last 7 days |
-| `get_category_spending(user_id, month, year)` | Spending breakdown by category |
-| `has_recorded_today(user_id)` | Check if user recorded any expense today |
-
-### Security
-
-- **18 RLS policies** across all tables — users can only read/write their own data
-- **Auto-create profile trigger** — a profile row is created automatically when a user signs up
-- **Cookie-based auth sessions** via `@supabase/ssr` for secure server-side rendering
+| Jadual | Penerangan |
+|--------|------------|
+| `profiles` | Melanjutkan Supabase `auth.users` — menyimpan full_name, avatar_url, university, currency |
+| `categories` | 7 kategori lalai dengan nama, ikon, warna, dan susunan |
+| `expenses` | Perbelanjaan pengguna — jumlah disimpan dalam **sen (integer cents)** untuk mengelak isu floating point |
+| `budgets` | Bajet bulanan setiap pengguna dengan peratusan had amaran boleh dikonfigurasi |
+| `category_budgets` | Peruntukan bajet setiap kategori (pilihan) |
+| `notification_settings` | Keutamaan peringatan harian dan amaran bajet |
 
 ---
 
-## Getting Started
+## Mula Menggunakan
 
-### Prerequisites
+### Prasyarat
 
-- [Node.js](https://nodejs.org/) 18 or later
+- [Node.js](https://nodejs.org/) 18 atau lebih baharu
 - [npm](https://www.npmjs.com/)
-- A free [Supabase](https://supabase.com/) account
+- Akaun [Supabase](https://supabase.com/) percuma
 
-### 1. Clone the repository
+### 1. Klon repositori
 
 ```bash
-git clone https://github.com/MuhammadLuqman-99/budgetku.git
-cd budgetku
+git clone <url-repositori-anda>
+cd smartspendipt
 ```
 
-### 2. Install dependencies
+### 2. Pasang dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Set up Supabase
+### 3. Sediakan Supabase
 
-1. Create a new project at [supabase.com](https://supabase.com/)
-2. Go to **SQL Editor** and run the migration:
+1. Cipta projek baru di [supabase.com](https://supabase.com/)
+2. Pergi ke **SQL Editor** dan jalankan migrasi:
 
 ```
--- Copy and paste the contents of:
+-- Salin dan tampal kandungan:
 supabase/migrations/001_initial_schema.sql
 ```
 
-This creates all 6 tables, 7 default categories, 18 RLS policies, triggers, and database functions.
+### 4. Konfigurasi pembolehubah persekitaran
 
-3. **(Optional) Enable Google OAuth:**
-   - Create a Google OAuth app at [Google Cloud Console](https://console.cloud.google.com/)
-   - In Supabase Dashboard: **Authentication > Providers > Google** — add Client ID and Secret
-   - Add redirect URI: `https://<your-project-ref>.supabase.co/auth/v1/callback`
-
-### 4. Configure environment variables
-
-Create a `.env.local` file in the project root:
+Cipta fail `.env.local` di root projek:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 ```
 
-Find these values in Supabase Dashboard: **Settings > API**
-
-### 5. Run the development server
+### 5. Jalankan pelayan pembangunan
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Buka [http://localhost:3000](http://localhost:3000) di pelayar anda.
 
 ---
 
-## Environment Variables
+## Skrip
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | Yes |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anonymous (public) key | Yes |
-
-> **Note:** These are public keys safe to use in client-side code. Never expose your Supabase `service_role` key.
-
----
-
-## Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server at localhost:3000 |
-| `npm run build` | Create optimized production build |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint checks |
+| Arahan | Penerangan |
+|--------|------------|
+| `npm run dev` | Mula pelayan pembangunan di localhost:3000 |
+| `npm run build` | Cipta binaan pengeluaran yang dioptimumkan |
+| `npm run start` | Mula pelayan pengeluaran |
+| `npm run lint` | Jalankan semakan ESLint |
 
 ---
 
-## Deployment
+## Pengarang
 
-### Deploy to Vercel (Recommended)
+**Ahli Kumpulan (DPM5A) — Politeknik Merlimau Melaka**
 
-1. Push your code to GitHub
-2. Go to [vercel.com](https://vercel.com/) and click **"Import Project"**
-3. Select your GitHub repository
-4. Add environment variables:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-5. Click **Deploy**
+| Nama | No. Pendaftaran |
+|------|-----------------|
+| Nur Hafizah binti Abdul Aziz | 14DPM23F2007 |
+| Siti Aishah binti Suhaimi | 14DPM23F2025 |
+| Sathis Kumar A/L Arivanandan | 14DPM23F1803 |
 
-### After Deployment
-
-Update your Supabase project:
-
-1. **Site URL**: Supabase Dashboard > Authentication > URL Configuration > set **Site URL** to your Vercel domain (e.g., `https://budgetku-zeta.vercel.app`)
-2. **Redirect URLs**: Add your Vercel domain to the redirect allowlist:
-   - `https://your-app.vercel.app/**`
-3. **Google OAuth** (if enabled): Add your Vercel domain to **Authorized JavaScript origins** in Google Cloud Console
+**Projek Akhir** — Aplikasi Pengurusan Kewangan Pelajar Politeknik
 
 ---
 
-## Project Stats
+## Lesen
 
-| Metric | Count |
-|--------|-------|
-| Total source files | 79 |
-| Pages / Routes | 12 |
-| React Components | 39 |
-| Custom Hooks | 6 |
-| Database Tables | 6 |
-| RLS Policies | 18 |
-| Database Functions | 6 |
-| npm Dependencies | 34 |
-
----
-
-## Screenshots
-
-> Try the [live demo](https://budgetku-zeta.vercel.app) to see the app in action!
-
-<!--
-Uncomment and add screenshots:
-![Landing Page](screenshots/landing.png)
-![Dashboard](screenshots/dashboard.png)
-![Add Expense](screenshots/add-expense.png)
-![Budget Settings](screenshots/budget.png)
-![Analytics](screenshots/analytics.png)
-![Dark Mode](screenshots/dark-mode.png)
--->
-
----
-
-## Author
-
-**Muhammad Luqman**
-
-- GitHub: [@MuhammadLuqman-99](https://github.com/MuhammadLuqman-99)
-
-**Final Year Project (FYP)** — Student Financial Management System
-
----
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+Projek ini adalah sumber terbuka dan tersedia di bawah [Lesen MIT](LICENSE).

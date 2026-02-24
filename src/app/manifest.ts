@@ -3,7 +3,7 @@ import { APP_NAME, APP_DESCRIPTION } from '@/lib/constants';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${APP_NAME} - Student Finance Manager`,
+    name: `${APP_NAME} - Pengurusan Kewangan Pelajar Politeknik`,
     short_name: APP_NAME,
     description: APP_DESCRIPTION,
     start_url: '/dashboard',

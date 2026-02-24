@@ -23,6 +23,6 @@ export const BUDGET_THRESHOLDS = {
   CRITICAL: 100,
 } as const;
 
-export const APP_NAME = 'BudgetKu';
-export const APP_DESCRIPTION = 'Student Financial Management App';
+export const APP_NAME = 'SMARTSPENDIPT';
+export const APP_DESCRIPTION = 'Aplikasi Pengurusan Kewangan Pelajar Politeknik';
 export const APP_VERSION = '1.0.0';
