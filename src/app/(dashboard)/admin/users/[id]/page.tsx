@@ -1,6 +1,5 @@
 'use client';
 
-import { use } from 'react';
 import { useAdminUserDetail } from '@/hooks/use-admin';
 import { formatRM, formatDate } from '@/lib/format';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -21,9 +20,9 @@ import Link from 'next/link';
 export default function AdminUserDetailPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
-  const { id } = use(params);
+  const { id } = params;
   const { profile, expenses, loading } = useAdminUserDetail(id);
 
   if (loading) return <LoadingSpinner className="py-12" />;
