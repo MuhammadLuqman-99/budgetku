@@ -54,44 +54,56 @@ export async function middleware(request: NextRequest) {
       request.nextUrl.pathname.startsWith('/register') ||
       request.nextUrl.pathname.startsWith('/forgot-password'))
   ) {
-    const url = request.nextUrl.clone();
-    url.pathname = '/dashboard';
-    return NextResponse.redirect(url);
-  }
-
-  // Protect admin routes - check role in profiles table
-  if (user && request.nextUrl.pathname.startsWith('/admin')) {
+    // Check if admin to redirect to admin dashboard instead
     const { data: profile } = await supabase
       .from('profiles')
       .select('role')
       .eq('id', user.id)
       .single();
 
-    if (profile?.role !== 'admin') {
-      const url = request.nextUrl.clone();
-      url.pathname = '/dashboard';
-      return NextResponse.redirect(url);
-    }
+    const url = request.nextUrl.clone();
+    url.pathname = profile?.role === 'admin' ? '/admin' : '/dashboard';
+    return NextResponse.redirect(url);
   }
 
-  // Redirect users without matric number to complete profile
+  // Fetch profile once for all remaining checks
   if (
     user &&
-    !request.nextUrl.pathname.startsWith('/profile/complete') &&
     !request.nextUrl.pathname.startsWith('/login') &&
     !request.nextUrl.pathname.startsWith('/register') &&
     !request.nextUrl.pathname.startsWith('/forgot-password') &&
     !request.nextUrl.pathname.startsWith('/auth') &&
-    !request.nextUrl.pathname.startsWith('/admin') &&
     request.nextUrl.pathname !== '/'
   ) {
     const { data: profile } = await supabase
       .from('profiles')
-      .select('matric_number, role')
+      .select('role, matric_number')
       .eq('id', user.id)
       .single();
 
-    if (profile && !profile.matric_number && profile.role !== 'admin') {
+    const isAdmin = profile?.role === 'admin';
+
+    // Redirect admin users from /dashboard to /admin
+    if (isAdmin && request.nextUrl.pathname === '/dashboard') {
+      const url = request.nextUrl.clone();
+      url.pathname = '/admin';
+      return NextResponse.redirect(url);
+    }
+
+    // Protect admin routes - non-admin cannot access
+    if (!isAdmin && request.nextUrl.pathname.startsWith('/admin')) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/dashboard';
+      return NextResponse.redirect(url);
+    }
+
+    // Redirect users without matric number to complete profile
+    if (
+      !isAdmin &&
+      !request.nextUrl.pathname.startsWith('/profile/complete') &&
+      profile &&
+      !profile.matric_number
+    ) {
       const url = request.nextUrl.clone();
       url.pathname = '/profile/complete';
       return NextResponse.redirect(url);

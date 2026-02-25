@@ -44,9 +44,19 @@ export default function LoginPage() {
       return;
     }
 
-    toast.success('Welcome back!');
-    router.push('/dashboard');
-    router.refresh();
+    // Check if admin to redirect to admin dashboard
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', user.id)
+        .single();
+
+      toast.success('Welcome back!');
+      router.push(profile?.role === 'admin' ? '/admin' : '/dashboard');
+      router.refresh();
+    }
   }
 
   async function signInWithGoogle() {
