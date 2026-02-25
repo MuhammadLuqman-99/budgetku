@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAdminUsers } from '@/hooks/use-admin';
 import { useDebounce } from '@/hooks/use-debounce';
 import { exportUsersToCSV } from '@/lib/admin-export';
@@ -18,10 +19,11 @@ import {
 } from '@/components/ui/table';
 import { LoadingSpinner } from '@/components/shared/loading-spinner';
 import { EmptyState } from '@/components/shared/empty-state';
-import { Download, Search, ArrowLeft, Users, Eye } from 'lucide-react';
+import { Download, Search, ArrowLeft, Users } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminUsersPage() {
+  const router = useRouter();
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebounce(search, 300);
   const { users, loading } = useAdminUsers(debouncedSearch);
@@ -79,36 +81,29 @@ export default function AdminUsersPage() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>Nama</TableHead>
-                    <TableHead>Email</TableHead>
                     <TableHead>No. Matrik</TableHead>
                     <TableHead>Fakulti</TableHead>
-                    <TableHead>Program</TableHead>
-                    <TableHead>Universiti</TableHead>
                     <TableHead className="text-right">Transaksi</TableHead>
                     <TableHead className="text-right">Jumlah</TableHead>
                     <TableHead>Tarikh Daftar</TableHead>
-                    <TableHead className="text-center">Detail</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {users.map((user) => (
-                    <TableRow key={user.id}>
-                      <TableCell className="font-medium">{user.full_name}</TableCell>
-                      <TableCell>{user.email}</TableCell>
+                    <TableRow
+                      key={user.id}
+                      className="cursor-pointer hover:bg-muted/50"
+                      onClick={() => router.push(`/admin/users/${user.id}`)}
+                    >
+                      <TableCell>
+                        <div className="font-medium">{user.full_name}</div>
+                        <div className="text-xs text-muted-foreground">{user.email}</div>
+                      </TableCell>
                       <TableCell>{user.matric_number || '-'}</TableCell>
                       <TableCell>{user.faculty || '-'}</TableCell>
-                      <TableCell>{user.program || '-'}</TableCell>
-                      <TableCell>{user.university || '-'}</TableCell>
                       <TableCell className="text-right">{user.expense_count}</TableCell>
                       <TableCell className="text-right">{formatRM(user.total_spending)}</TableCell>
                       <TableCell>{formatDate(user.created_at)}</TableCell>
-                      <TableCell className="text-center">
-                        <Link href={`/admin/users/${user.id}`}>
-                          <Button variant="ghost" size="icon">
-                            <Eye className="h-4 w-4" />
-                          </Button>
-                        </Link>
-                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
