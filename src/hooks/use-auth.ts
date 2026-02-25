@@ -5,7 +5,7 @@ import { useAuthStore } from '@/stores/auth-store';
 import { createClient } from '@/lib/supabase/client';
 
 export function useAuth() {
-  const { user, isLoading, hydrate } = useAuthStore();
+  const { user, profile, isAdmin, isLoading, hydrate } = useAuthStore();
 
   useEffect(() => {
     hydrate();
@@ -15,14 +15,14 @@ export function useAuth() {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
-        useAuthStore.setState({ user: session.user, isLoading: false });
+        hydrate();
       } else {
-        useAuthStore.setState({ user: null, isLoading: false });
+        useAuthStore.setState({ user: null, profile: null, isAdmin: false, isLoading: false });
       }
     });
 
     return () => subscription.unsubscribe();
   }, [hydrate]);
 
-  return { user, isLoading };
+  return { user, profile, isAdmin, isLoading };
 }

@@ -31,6 +31,9 @@ export default function ProfilePage() {
     defaultValues: {
       full_name: '',
       university: '',
+      matric_number: '',
+      faculty: '',
+      program: '',
     },
   });
 
@@ -57,6 +60,9 @@ export default function ProfilePage() {
         form.reset({
           full_name: profileData.full_name,
           university: profileData.university || '',
+          matric_number: profileData.matric_number || '',
+          faculty: profileData.faculty || '',
+          program: profileData.program || '',
         });
       }
 
@@ -96,6 +102,9 @@ export default function ProfilePage() {
       .update({
         full_name: values.full_name,
         university: values.university || null,
+        matric_number: values.matric_number,
+        faculty: values.faculty || null,
+        program: values.program || null,
       })
       .eq('id', user.id);
 
@@ -171,6 +180,48 @@ export default function ProfilePage() {
                     <FormLabel>University</FormLabel>
                     <FormControl>
                       <Input placeholder="e.g., UiTM, UM, USM" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="matric_number"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Nombor Matrik</FormLabel>
+                    <FormControl>
+                      <Input placeholder="cth: 01DIP22F1234" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="faculty"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Fakulti / Jabatan</FormLabel>
+                    <FormControl>
+                      <Input placeholder="cth: Jabatan Teknologi Maklumat" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="program"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Program Pengajian</FormLabel>
+                    <FormControl>
+                      <Input placeholder="cth: Diploma Teknologi Maklumat" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

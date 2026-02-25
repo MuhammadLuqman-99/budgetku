@@ -15,6 +15,7 @@ import {
   Info,
   User,
   LogOut,
+  Shield,
 } from 'lucide-react';
 
 const navItems = [
@@ -29,7 +30,7 @@ const navItems = [
 
 export function Sidebar() {
   const pathname = usePathname();
-  const { signOut } = useAuthStore();
+  const { signOut, isAdmin } = useAuthStore();
 
   return (
     <aside className="hidden lg:flex lg:flex-col lg:w-64 lg:border-r bg-card h-screen sticky top-0">
@@ -61,6 +62,27 @@ export function Sidebar() {
             </Link>
           );
         })}
+        {isAdmin && (
+          <>
+            <div className="px-3 pt-4 pb-1">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                Admin
+              </p>
+            </div>
+            <Link
+              href="/admin"
+              className={cn(
+                'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                pathname.startsWith('/admin')
+                  ? 'bg-primary text-primary-foreground'
+                  : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+              )}
+            >
+              <Shield className="h-4 w-4" />
+              Admin Panel
+            </Link>
+          </>
+        )}
       </nav>
 
       <div className="p-3 border-t">

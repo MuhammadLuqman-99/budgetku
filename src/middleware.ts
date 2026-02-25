@@ -59,6 +59,45 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // Protect admin routes - check role in profiles table
+  if (user && request.nextUrl.pathname.startsWith('/admin')) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+
+    if (profile?.role !== 'admin') {
+      const url = request.nextUrl.clone();
+      url.pathname = '/dashboard';
+      return NextResponse.redirect(url);
+    }
+  }
+
+  // Redirect users without matric number to complete profile
+  if (
+    user &&
+    !request.nextUrl.pathname.startsWith('/profile/complete') &&
+    !request.nextUrl.pathname.startsWith('/login') &&
+    !request.nextUrl.pathname.startsWith('/register') &&
+    !request.nextUrl.pathname.startsWith('/forgot-password') &&
+    !request.nextUrl.pathname.startsWith('/auth') &&
+    !request.nextUrl.pathname.startsWith('/admin') &&
+    request.nextUrl.pathname !== '/'
+  ) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('matric_number, role')
+      .eq('id', user.id)
+      .single();
+
+    if (profile && !profile.matric_number && profile.role !== 'admin') {
+      const url = request.nextUrl.clone();
+      url.pathname = '/profile/complete';
+      return NextResponse.redirect(url);
+    }
+  }
+
   return supabaseResponse;
 }
 

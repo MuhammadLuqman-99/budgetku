@@ -39,6 +39,12 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 export const registerSchema = z
   .object({
     full_name: z.string().min(2, 'Name must be at least 2 characters'),
+    matric_number: z
+      .string()
+      .min(3, 'Matric number must be at least 3 characters')
+      .max(20, 'Matric number must be less than 20 characters'),
+    faculty: z.string().max(100, 'Faculty must be less than 100 characters').optional().or(z.literal('')),
+    program: z.string().max(100, 'Program must be less than 100 characters').optional().or(z.literal('')),
     email: z.string().email('Please enter a valid email address'),
     password: z.string().min(6, 'Password must be at least 6 characters'),
     confirm_password: z.string().min(6, 'Please confirm your password'),
@@ -53,6 +59,23 @@ export type RegisterFormValues = z.infer<typeof registerSchema>;
 export const profileSchema = z.object({
   full_name: z.string().min(2, 'Name must be at least 2 characters'),
   university: z.string().optional().or(z.literal('')),
+  matric_number: z
+    .string()
+    .min(3, 'Matric number must be at least 3 characters')
+    .max(20, 'Matric number must be less than 20 characters'),
+  faculty: z.string().max(100, 'Faculty must be less than 100 characters').optional().or(z.literal('')),
+  program: z.string().max(100, 'Program must be less than 100 characters').optional().or(z.literal('')),
 });
 
 export type ProfileFormValues = z.infer<typeof profileSchema>;
+
+export const completeProfileSchema = z.object({
+  matric_number: z
+    .string()
+    .min(3, 'Matric number must be at least 3 characters')
+    .max(20, 'Matric number must be less than 20 characters'),
+  faculty: z.string().max(100, 'Faculty must be less than 100 characters').optional().or(z.literal('')),
+  program: z.string().max(100, 'Program must be less than 100 characters').optional().or(z.literal('')),
+});
+
+export type CompleteProfileFormValues = z.infer<typeof completeProfileSchema>;

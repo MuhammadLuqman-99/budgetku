@@ -25,6 +25,9 @@ export default function RegisterPage() {
     resolver: zodResolver(registerSchema),
     defaultValues: {
       full_name: '',
+      matric_number: '',
+      faculty: '',
+      program: '',
       email: '',
       password: '',
       confirm_password: '',
@@ -41,6 +44,9 @@ export default function RegisterPage() {
       options: {
         data: {
           full_name: values.full_name,
+          matric_number: values.matric_number,
+          faculty: values.faculty || null,
+          program: values.program || null,
         },
       },
     });
@@ -92,6 +98,45 @@ export default function RegisterPage() {
                   <FormLabel>Full Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Ahmad bin Ali" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="matric_number"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Nombor Matrik</FormLabel>
+                  <FormControl>
+                    <Input placeholder="cth: 01DIP22F1234" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="faculty"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Fakulti / Jabatan (Optional)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="cth: Jabatan Teknologi Maklumat" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="program"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Program Pengajian (Optional)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="cth: Diploma Teknologi Maklumat" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

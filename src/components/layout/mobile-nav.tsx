@@ -17,6 +17,7 @@ import {
   Info,
   User,
   LogOut,
+  Shield,
 } from 'lucide-react';
 
 const navItems = [
@@ -32,7 +33,7 @@ const navItems = [
 export function MobileNav() {
   const pathname = usePathname();
   const { sidebarOpen, setSidebarOpen } = useUIStore();
-  const { signOut } = useAuthStore();
+  const { signOut, isAdmin } = useAuthStore();
 
   return (
     <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
@@ -66,6 +67,28 @@ export function MobileNav() {
               </Link>
             );
           })}
+          {isAdmin && (
+            <>
+              <div className="px-3 pt-4 pb-1">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  Admin
+                </p>
+              </div>
+              <Link
+                href="/admin"
+                onClick={() => setSidebarOpen(false)}
+                className={cn(
+                  'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                  pathname.startsWith('/admin')
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                )}
+              >
+                <Shield className="h-4 w-4" />
+                Admin Panel
+              </Link>
+            </>
+          )}
         </nav>
 
         <div className="p-3 border-t">
