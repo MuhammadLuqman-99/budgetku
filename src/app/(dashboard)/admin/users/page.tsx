@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/table';
 import { LoadingSpinner } from '@/components/shared/loading-spinner';
 import { EmptyState } from '@/components/shared/empty-state';
-import { Download, Search, ArrowLeft, Users } from 'lucide-react';
+import { Download, Search, ArrowLeft, Users, Eye } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminUsersPage() {
@@ -87,6 +87,7 @@ export default function AdminUsersPage() {
                     <TableHead className="text-right">Transaksi</TableHead>
                     <TableHead className="text-right">Jumlah</TableHead>
                     <TableHead>Tarikh Daftar</TableHead>
+                    <TableHead className="text-center">Detail</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -101,6 +102,13 @@ export default function AdminUsersPage() {
                       <TableCell className="text-right">{user.expense_count}</TableCell>
                       <TableCell className="text-right">{formatRM(user.total_spending)}</TableCell>
                       <TableCell>{formatDate(user.created_at)}</TableCell>
+                      <TableCell className="text-center">
+                        <Link href={`/admin/users/${user.id}`}>
+                          <Button variant="ghost" size="icon">
+                            <Eye className="h-4 w-4" />
+                          </Button>
+                        </Link>
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import type { AdminUserRow, AdminAppStats } from '@/types/auth';
+import type { AdminUserRow, AdminUserExpense, AdminAppStats } from '@/types/auth';
 
 export function useAdminUsers(search: string = '') {
   const [users, setUsers] = useState<AdminUserRow[]>([]);
@@ -33,6 +33,50 @@ export function useAdminUsers(search: string = '') {
   }, [fetchUsers]);
 
   return { users, loading, error, refetch: fetchUsers };
+}
+
+export function useAdminUserDetail(userId: string) {
+  const [profile, setProfile] = useState<AdminUserRow | null>(null);
+  const [expenses, setExpenses] = useState<AdminUserExpense[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchDetail() {
+      const supabase = createClient();
+
+      // Fetch profile info
+      const { data: profileData } = await supabase
+        .from('profiles')
+        .select('id, full_name, avatar_url, university, matric_number, faculty, program, created_at')
+        .eq('id', userId)
+        .single();
+
+      if (profileData) {
+        setProfile({
+          ...profileData,
+          email: '',
+          expense_count: 0,
+          total_spending: 0,
+        });
+      }
+
+      // Fetch all expenses with category info
+      const { data: expenseData } = await supabase
+        .from('expenses')
+        .select('id, description, amount, expense_date, notes, created_at, categories(name, color, icon)')
+        .eq('user_id', userId)
+        .order('expense_date', { ascending: false });
+
+      if (expenseData) {
+        setExpenses(expenseData as unknown as AdminUserExpense[]);
+      }
+
+      setLoading(false);
+    }
+    if (userId) fetchDetail();
+  }, [userId]);
+
+  return { profile, expenses, loading };
 }
 
 export function useAdminStats() {

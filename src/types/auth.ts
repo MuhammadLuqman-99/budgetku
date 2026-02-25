@@ -25,6 +25,20 @@ export interface AdminUserRow {
   total_spending: number;
 }
 
+export interface AdminUserExpense {
+  id: string;
+  description: string;
+  amount: number;
+  expense_date: string;
+  notes: string | null;
+  created_at: string;
+  categories: {
+    name: string;
+    color: string;
+    icon: string;
+  } | null;
+}
+
 export interface AdminAppStats {
   total_users: number;
   total_expenses: number;
