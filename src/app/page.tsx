@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
-import { Wallet, TrendingDown, PieChart, Bell, Shield, Smartphone, ArrowRight, CheckCircle2, GraduationCap, Users, Target } from 'lucide-react';
+import { Wallet, TrendingDown, PieChart, Bell, Shield, Smartphone, ArrowRight, CheckCircle2, GraduationCap, Users, Target, ClipboardList } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME, SURVEY_FORM_URL } from '@/lib/constants';
 
 export default async function Home() {
   const supabase = await createClient();
@@ -356,6 +356,29 @@ export default async function Home() {
               </Button>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Survey Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-purple-50/50 dark:bg-purple-950/20">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 dark:bg-purple-900/30 px-4 py-1.5 text-sm font-medium text-purple-700 dark:text-purple-400 mb-4">
+            <ClipboardList className="h-4 w-4" />
+            Borang Kajian
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3">
+            Bantu Kami Menambah Baik Aplikasi Ini
+          </h2>
+          <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+            Sila isi borang kajian keberkesanan untuk membantu kami memahami pengalaman anda menggunakan {APP_NAME}.
+            Maklum balas anda amat bermakna untuk kajian ini.
+          </p>
+          <a href={SURVEY_FORM_URL} target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white text-base px-8 h-12">
+              <ClipboardList className="mr-2 h-5 w-5" />
+              Isi Borang Kajian
+            </Button>
+          </a>
         </div>
       </section>
 
