@@ -83,6 +83,16 @@ export async function middleware(request: NextRequest) {
 
     const isAdmin = profile?.role === 'admin';
 
+    // If no profile exists (pre-migration user), redirect to complete profile
+    if (
+      !profile &&
+      !request.nextUrl.pathname.startsWith('/profile/complete')
+    ) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/profile/complete';
+      return NextResponse.redirect(url);
+    }
+
     // Redirect admin users from /dashboard to /admin
     if (isAdmin && request.nextUrl.pathname === '/dashboard') {
       const url = request.nextUrl.clone();

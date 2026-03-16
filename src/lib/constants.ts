@@ -23,6 +23,9 @@ export const BUDGET_THRESHOLDS = {
   CRITICAL: 100,
 } as const;
 
+export const SURVEY_FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSeZmaixFdsTt8p23b1MRx3fOIGSBiVbPrb5StYDKWlmO_DW5g/viewform?usp=publish-editor';
+
 export const APP_NAME = 'SMARTSPENDIPT';
 export const APP_DESCRIPTION = 'Aplikasi Pengurusan Kewangan Pelajar Politeknik';
 export const APP_VERSION = '1.0.0';

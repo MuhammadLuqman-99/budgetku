@@ -40,19 +40,40 @@ export default function CompleteProfilePage() {
       return;
     }
 
-    const { error } = await supabase
+    // Try update first (existing profile)
+    const { data: updated, error: updateError } = await supabase
       .from('profiles')
       .update({
         matric_number: values.matric_number,
         faculty: values.faculty || null,
         program: values.program || null,
       })
-      .eq('id', user.id);
+      .eq('id', user.id)
+      .select();
 
-    if (error) {
-      toast.error(error.message);
+    if (updateError) {
+      toast.error(updateError.message);
       setIsSubmitting(false);
       return;
+    }
+
+    // If no profile row existed, insert one
+    if (!updated || updated.length === 0) {
+      const { error: insertError } = await supabase
+        .from('profiles')
+        .insert({
+          id: user.id,
+          full_name: user.user_metadata?.full_name || user.email || 'User',
+          matric_number: values.matric_number,
+          faculty: values.faculty || null,
+          program: values.program || null,
+        });
+
+      if (insertError) {
+        toast.error(insertError.message);
+        setIsSubmitting(false);
+        return;
+      }
     }
 
     toast.success('Profile completed!');

@@ -6,6 +6,8 @@ import { BudgetSummaryCard } from '@/components/dashboard/budget-summary-card';
 import { WeeklyChart } from '@/components/dashboard/weekly-chart';
 import { SmartAlerts } from '@/components/dashboard/smart-alerts';
 import { DailyReminder } from '@/components/dashboard/daily-reminder';
+import { SurveyPrompt } from '@/components/dashboard/survey-prompt';
+import { InactivityReminder } from '@/components/dashboard/inactivity-reminder';
 import { RecentTransactions } from '@/components/dashboard/recent-transactions';
 import { QuickActions } from '@/components/dashboard/quick-actions';
 
@@ -35,6 +37,10 @@ export default function DashboardPage() {
       />
 
       <DailyReminder />
+
+      <InactivityReminder />
+
+      <SurveyPrompt />
 
       <QuickActions />
 
