@@ -31,7 +31,6 @@ self.addEventListener('push', (event) => {
     badge: '/icons/icon-192x192.png',
     data: { url: data.url || '/expenses/new' },
     tag: 'daily-reminder',
-    renotify: true,
   };
   event.waitUntil(self.registration.showNotification(title, options));
 });
