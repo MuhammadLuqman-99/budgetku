@@ -14,9 +14,10 @@ LEFT JOIN public.profiles p ON p.id = u.id
 WHERE p.id IS NULL;
 
 -- Part 2: Add 4th admin (supervisor)
--- TODO: Replace 'SUPERVISOR_MATRIC' and 'SUPERVISOR_NAME' with actual values
--- Uncomment and run once supervisor details are provided:
--- UPDATE public.profiles
--- SET role = 'admin'
--- WHERE matric_number = 'SUPERVISOR_MATRIC'
---    OR full_name = 'SUPERVISOR_NAME';
+-- Supervisor must register first with email admin@bugetku.lecture.com
+UPDATE public.profiles
+SET role = 'admin'
+WHERE id IN (
+  SELECT id FROM auth.users
+  WHERE email = 'admin@bugetku.lecture.com'
+);
