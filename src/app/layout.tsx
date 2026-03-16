@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import { ThemeProvider } from '@/components/shared/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { InstallPrompt } from '@/components/shared/install-prompt';
+import { PushNotificationBanner } from '@/components/shared/push-notification-banner';
 import { APP_NAME, APP_DESCRIPTION } from '@/lib/constants';
 import './globals.css';
 
@@ -57,6 +58,7 @@ export default function RootLayout({
           {children}
           <Toaster richColors position="top-center" />
           <InstallPrompt />
+          <PushNotificationBanner />
         </ThemeProvider>
       </body>
     </html>

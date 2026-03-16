@@ -20,3 +20,36 @@ const serwist = new Serwist({
 });
 
 serwist.addEventListeners();
+
+// Push notification handler
+sw.addEventListener('push', (event) => {
+  const data = event.data?.json() ?? {};
+  const title = data.title || 'SMARTSPENDIPT';
+  const options: NotificationOptions = {
+    body: data.body || 'Jangan lupa catat perbelanjaan hari ini!',
+    icon: '/icons/icon-192x192.png',
+    badge: '/icons/icon-192x192.png',
+    data: { url: data.url || '/expenses/new' },
+    tag: 'daily-reminder',
+    renotify: true,
+  };
+  event.waitUntil(sw.registration.showNotification(title, options));
+});
+
+// Notification click handler — open the app
+sw.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const url = event.notification.data?.url || '/expenses/new';
+  event.waitUntil(
+    sw.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
+      for (const client of clientList) {
+        if ('focus' in client) {
+          client.focus();
+          (client as WindowClient).navigate(url);
+          return;
+        }
+      }
+      return sw.clients.openWindow(url);
+    })
+  );
+});

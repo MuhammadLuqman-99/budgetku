@@ -16,6 +16,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { LoadingSpinner } from '@/components/shared/loading-spinner';
 import { toast } from 'sonner';
 import { Loader2, Bell, LogOut } from 'lucide-react';
+import { isPushSupported, subscribeToPush, unsubscribePush } from '@/lib/push-notifications';
 import type { Profile } from '@/types/auth';
 
 export default function ProfilePage() {
@@ -243,7 +244,20 @@ export default function ProfilePage() {
                       Remind me if I haven&apos;t recorded expenses today
                     </p>
                   </div>
-                  <Switch checked={dailyReminder} onCheckedChange={setDailyReminder} />
+                  <Switch
+                    checked={dailyReminder}
+                    onCheckedChange={async (checked) => {
+                      setDailyReminder(checked);
+                      if (checked && isPushSupported()) {
+                        const permission = await Notification.requestPermission();
+                        if (permission === 'granted') {
+                          await subscribeToPush();
+                        }
+                      } else if (!checked && isPushSupported()) {
+                        await unsubscribePush();
+                      }
+                    }}
+                  />
                 </div>
 
                 <div className="flex items-center justify-between">
