@@ -26,6 +26,12 @@ export default async function Home() {
             </div>
             <span className="text-xl font-bold">{APP_NAME}</span>
           </div>
+          <div className="hidden sm:flex items-center gap-4 text-sm">
+            <a href="#tujuan" className="text-muted-foreground hover:text-foreground transition-colors">Tujuan</a>
+            <a href="#ciri" className="text-muted-foreground hover:text-foreground transition-colors">Ciri-ciri</a>
+            <a href="#ahli" className="text-muted-foreground hover:text-foreground transition-colors">Ahli</a>
+            <a href="#kajian" className="text-muted-foreground hover:text-foreground transition-colors">Kajian</a>
+          </div>
           <div className="flex items-center gap-3">
             <Link href="/login">
               <Button variant="ghost" size="sm">Log Masuk</Button>
@@ -129,7 +135,7 @@ export default async function Home() {
       </section>
 
       {/* Tujuan Projek */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section id="tujuan" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4">
@@ -175,7 +181,7 @@ export default async function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="ciri" className="py-20 px-4 sm:px-6 lg:px-8 scroll-mt-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Semua Yang Anda Perlukan Untuk Mengurus Wang</h2>
@@ -298,7 +304,7 @@ export default async function Home() {
       </section>
 
       {/* Ahli Kumpulan */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section id="ahli" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 scroll-mt-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4">
@@ -360,7 +366,7 @@ export default async function Home() {
       </section>
 
       {/* Survey Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-purple-50/50 dark:bg-purple-950/20">
+      <section id="kajian" className="py-16 px-4 sm:px-6 lg:px-8 bg-purple-50/50 dark:bg-purple-950/20 scroll-mt-16">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-purple-100 dark:bg-purple-900/30 px-4 py-1.5 text-sm font-medium text-purple-700 dark:text-purple-400 mb-4">
             <ClipboardList className="h-4 w-4" />
