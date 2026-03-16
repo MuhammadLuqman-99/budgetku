@@ -164,6 +164,9 @@ export default function LoginPage() {
             Sign up
           </Link>
         </p>
+        <Link href="/" className="text-sm text-muted-foreground hover:text-primary">
+          ← Kembali ke Laman Utama
+        </Link>
       </CardFooter>
     </Card>
   );
