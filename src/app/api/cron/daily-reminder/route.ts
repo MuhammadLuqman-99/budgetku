@@ -1,14 +1,15 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import webpush from 'web-push';
+import { setVapidDetails, sendNotification } from 'web-push';
 
-webpush.setVapidDetails(
-  'mailto:smartspendipt@gmail.com',
-  process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
-  process.env.VAPID_PRIVATE_KEY!
-);
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {
+  setVapidDetails(
+    'mailto:smartspendipt@gmail.com',
+    process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
+    process.env.VAPID_PRIVATE_KEY!
+  );
   // Verify cron secret
   const authHeader = request.headers.get('authorization');
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
@@ -38,7 +39,7 @@ export async function GET(request: Request) {
 
   for (const user of users || []) {
     try {
-      await webpush.sendNotification(user.push_subscription, payload);
+      await sendNotification(user.push_subscription, payload);
       sent++;
     } catch (err: unknown) {
       failed++;
