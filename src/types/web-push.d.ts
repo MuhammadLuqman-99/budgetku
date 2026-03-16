@@ -16,6 +16,5 @@ declare module 'web-push' {
   function setVapidDetails(subject: string, publicKey: string, privateKey: string): void;
   function sendNotification(subscription: PushSubscription, payload: string): Promise<SendResult>;
 
-  export default { setVapidDetails, sendNotification };
   export { setVapidDetails, sendNotification };
 }
