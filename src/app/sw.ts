@@ -9,10 +9,10 @@ declare global {
   }
 }
 
-const sw = self as unknown as ServiceWorkerGlobalScope & typeof globalThis;
+declare const self: ServiceWorkerGlobalScope & typeof globalThis;
 
 const serwist = new Serwist({
-  precacheEntries: sw.__SW_MANIFEST,
+  precacheEntries: self.__SW_MANIFEST,
   skipWaiting: true,
   clientsClaim: true,
   navigationPreload: true,
@@ -22,7 +22,7 @@ const serwist = new Serwist({
 serwist.addEventListeners();
 
 // Push notification handler
-sw.addEventListener('push', (event) => {
+self.addEventListener('push', (event) => {
   const data = event.data?.json() ?? {};
   const title = data.title || 'SMARTSPENDIPT';
   const options: NotificationOptions = {
@@ -33,15 +33,15 @@ sw.addEventListener('push', (event) => {
     tag: 'daily-reminder',
     renotify: true,
   };
-  event.waitUntil(sw.registration.showNotification(title, options));
+  event.waitUntil(self.registration.showNotification(title, options));
 });
 
 // Notification click handler — open the app
-sw.addEventListener('notificationclick', (event) => {
+self.addEventListener('notificationclick', (event) => {
   event.notification.close();
   const url = event.notification.data?.url || '/expenses/new';
   event.waitUntil(
-    sw.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
       for (const client of clientList) {
         if ('focus' in client) {
           client.focus();
@@ -49,7 +49,7 @@ sw.addEventListener('notificationclick', (event) => {
           return;
         }
       }
-      return sw.clients.openWindow(url);
+      return self.clients.openWindow(url);
     })
   );
 });
